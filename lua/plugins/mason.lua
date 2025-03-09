@@ -14,7 +14,7 @@ mason.setup({
       package_pending = "➜",
       package_uninstalled = "✗",
     },
-    border = "none",  -
+    border = "none", 
     keymaps = {
       toggle_package_expand = "<CR>",
       install_package = "i",
