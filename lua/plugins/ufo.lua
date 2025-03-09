@@ -1,37 +1,41 @@
 local status_ok, ufo = pcall(require, "ufo")
 if not status_ok then
-	return
+    return
 end
 
 ufo.setup({
-	provider_selector = function(bufnr, filetype, buftype)
-		return { "treesitter", "indent" }
-	end,
+    provider_selector = function(bufnr, filetype, buftype)
+        return { "treesitter", "indent" }
+    end,
 
-	fold_virt_text_handler = nil,
-	open_fold_hl_timeout = 400,
+    fold_virt_text_handler = nil,
+    open_fold_hl_timeout = 400,
 
-	close_fold_kinds = { "imports", "comment" },
-	preview = {
-		win_config = {
-			border = "rounded",
-			winhighlight = "Normal:Folded",
-		},
-		mappings = {
-			scrollU = "<C-u>",
-			scrollD = "<C-d>",
-		},
-	},
+    -- Opción corregida: close_fold_kinds → close_fold_kinds_for_ft
+    close_fold_kinds_for_ft = {
+        ["*"] = { "imports", "comment" }  -- Aplica a todos los archivos
+    },
 
-	keymaps = {
-		open_all_folds = "zR",
-		close_all_folds = "zM",
+    preview = {
+        win_config = {
+            border = "rounded",
+            winhighlight = "Normal:Folded",
+        },
+        mappings = {
+            scrollU = "<C-u>",
+            scrollD = "<C-d>",
+        },
+    },
 
-		open_fold = "zo",
-		close_fold = "zc",
-		open_fold_recursively = "zO",
-		close_fold_recursively = "zC",
+    keymaps = {
+        open_all_folds = "zR",
+        close_all_folds = "zM",
 
-		preview_fold = "zp",
-	},
+        open_fold = "zo",
+        close_fold = "zc",
+        open_fold_recursively = "zO",
+        close_fold_recursively = "zC",
+
+        preview_fold = "zp",
+    },
 })
