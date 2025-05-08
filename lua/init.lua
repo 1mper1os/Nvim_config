@@ -241,4 +241,20 @@ require("lazy").setup({
 			require("plugins.tree")
 		end,
 	},
+	{
+		"rmagatti/goto-preview",
+		config = function()
+			require("plugins.goto-p")
+		end,
+	},
+	{
+		"stevearc/oil.nvim",
+		lazy = true,
+		config = function()
+			require("plugins.oil").setup()
+		end,
+		keys = {
+			{ "<leader>e", desc = "Explorer (Oil)" },
+		},
+	},
 })
