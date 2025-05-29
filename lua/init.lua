@@ -134,6 +134,7 @@ require("lazy").setup({
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
+    "echasnovski/mini.bufremove",
 		config = function()
 			require("plugins.buffer")
 		end,
